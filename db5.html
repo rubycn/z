@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rubycn</title>
+</head>
+<body>
+<p>SELECT MOV_TITLE
+    FROM MOVIES
+    WHERE DIR_ID IN (SELECT DIR_ID
+    FROM DIRECTOR 
+    WHERE DIR_NAME = ‘HITCHCOCK’);</p>
+
+<p>SELECT MOV_TITLE
+    FROM MOVIES M, MOVIE_CAST MV 
+    WHERE M.MOV_ID=MV.MOV_ID AND ACT_ID IN (SELECT ACT_ID
+    FROM MOVIE_CAST GROUP BY ACT_ID
+    HAVING COUNT (ACT_ID)>1)
+    GROUP BY MOV_TITLE
+    HAVING COUNT (*)>1;</p>
+
+
+<p>SELECT A.ACT_NAME, A.ACT_NAME, C.MOV_TITLE, C.MOV_YEAR
+    FROM ACTOR A, MOVIE_CAST B, MOVIES C 
+    WHERE A.ACT_ID=B.ACT_ID
+    AND B.MOV_ID=C.MOV_ID
+    AND C.MOV_YEAR NOT BETWEEN 2000 AND 2015;</p>
+
+<p>SELECT MOV_TITLE, MAX (REV_STARS) 
+    FROM MOVIES 
+    INNER JOIN RATING USING (MOV_ID) 
+    GROUP BY MOV_TITLE
+    HAVING MAX (REV_STARS)>0 
+    ORDER BY MOV_TITLE;</p>
+
+<p>UPDATE RATING 
+    SET REV_STARS=5 
+    WHERE MOV_ID IN (SELECT MOV_ID FROM MOVIES 
+    WHERE DIR_ID IN (SELECT DIR_ID
+    FROM DIRECTOR 
+    WHERE DIR_NAME = ‘STEVEN SPIELBERG’));</p>
+
+<p>DELETE FROM RATING WHERE REV_STARS < 3;</p>
+<a href="./q5.pdf" download="./q5.pdf">q5</a>
+</body>
+</html>

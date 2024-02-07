@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rubycn</title>
+</head>
+<body>
+<p>. INSERT INTO TEXT VALUES(106,'CG','SAPNA','GODSE'); 
+    SELECT * FROM TEXT;|||| INSERT INTO BOOK_ADOPTION VALUES (5,6,106);
+    SELECT * FROM BOOK_ADOPTION;</p>
+
+<p>select c.course_no,t.book_isbn,t.book_title
+    from course c,text t,book_adoption b
+    where c.course_no=b.course_no and b.book_isbn=t.book_isbn and c.dept='cs' and
+    c.course_no in (select course_no
+     from book_adoption
+     group by course_no
+     having count(*)>=2)
+     group by c.course_no,t.book_title,t.book_isbn
+     order by c.course_no,t.book_title;</p>
+
+<p>select c.dept
+    from course c,text t,book_adoption b
+    where c.course_no=b.course_no and b.book_isbn=t.book_isbn and t.book_isbn
+    in ( select book_isbn
+     from text 
+     where publisher='pearson');</p>
+<a href="./q2.pdf" download="./q2.pdf">q2</a>
+</body>
+</html>
