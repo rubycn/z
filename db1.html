@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rubycn</title>
+</head>
+<body>
+<p>UPDATE PARTICIPATED SET DAMAGES='20000' 
+    WHERE REPORTNO BETWEEN 12 AND 25 AND REGNO='1027';</p>
+
+<p>INSERT INTO ACCIDENT VALUES(11,20090101,'2012');</p>
+
+
+<p>SELECT COUNT(*)
+    FROM ACCIDENT A,PARTICIPATED P
+    WHERE A.REPORTNO=P.REPORTNO AND DATE1
+    BETWEEN 20120101 AND 20121231 ; </p>
+
+<p>SELECT COUNT(*) 
+    FROM CAR C,PARTICIPATED P 
+    WHERE C.MODEL='PORSCHE' AND C.REGNO=P.REGNO;</p>
+<a href="./q1.pdf" download="./q1.pdf">q1</a>
+</body>
+</html>
